@@ -11,4 +11,9 @@ This project is started by following tutorial here
 -- for switching between dark and light mode Command(􀆔) + Shift (􀆝) + A
 
 ## Day 2:
+- layout UI views (tableViews with multiple sections, each section has a collection view)
+- tableView Layout Style using group layout & collection view is flowLayout
+- define class property with closure  
+- structure MVVM folders
+
 
