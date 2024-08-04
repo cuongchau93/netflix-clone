@@ -16,4 +16,12 @@ This project is started by following tutorial here
 - define class property with closure  
 - structure MVVM folders
 
+## Day 3:
+- Added main cover view with 2 button play & download
+- configure navigation bar
+ + the left bar button image along isn't left aligned
+ + I need to put it in as button and resize the image
+
+## Day 4: 
+- 
 

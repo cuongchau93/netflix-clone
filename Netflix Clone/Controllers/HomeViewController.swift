@@ -23,8 +23,30 @@ class HomeViewController: UIViewController {
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         
+        configureNavBar()
+        
         homeFeedTable.showsVerticalScrollIndicator = false
-        homeFeedTable.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
+        homeFeedTable.tableHeaderView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
+    }
+    
+    private func configureNavBar() {
+        let image = UIImage(named: "netflixLogo")?.withRenderingMode(.alwaysOriginal).resizeTo(size: CGSize(width: 25, height: 25))
+        let button = UIButton()
+        button.setBackgroundImage(image, for: .normal)
+        button.addTarget(self, action: #selector(netflixIconTapped), for: .touchUpInside)
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
+            UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil)
+        ]
+        
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
+    @objc func netflixIconTapped( ) {
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -60,4 +82,15 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return 40
     }
     
+}
+
+extension UIImage {
+    func resizeTo(size: CGSize) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let image = renderer.image { _ in
+            self.draw(in: CGRect.init(origin: CGPoint.zero, size: size))
+        }
+        
+        return image.withRenderingMode(self.renderingMode)
+    }
 }
