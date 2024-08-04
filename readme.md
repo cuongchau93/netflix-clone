@@ -24,5 +24,5 @@ This project is started by following tutorial here
 
 ## Day 4: 
 - when scroll up, navigation bar should be out of the screen
-    
+- dynamic section & titles
 
