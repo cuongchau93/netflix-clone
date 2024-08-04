@@ -23,5 +23,6 @@ This project is started by following tutorial here
  + I need to put it in as button and resize the image
 
 ## Day 4: 
-- 
+- when scroll up, navigation bar should be out of the screen
+    
 
