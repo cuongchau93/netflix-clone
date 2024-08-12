@@ -11,7 +11,7 @@ This project is started by following tutorial here
 -- for switching between dark and light mode Command(􀆔) + Shift (􀆝) + A
 
 ## Day 2:
-- layout UI views (tableViews with multiple sections, each section has a collection view)
+- layout UI views (tableView with multiple sections, each section has a collection view)
 - tableView Layout Style using group layout & collection view is flowLayout
 - define class property with closure  
 - structure MVVM folders
@@ -26,3 +26,10 @@ This project is started by following tutorial here
 - when scroll up, navigation bar should be out of the screen
 - dynamic section & titles
 
+## Day 5:
+- network request getting data from TMDB 
+- populate data on Home Table View's Collection View  & Upcoming table view
+- using Combine for network call instead of normal data task
+
+## Day 6:
+- Todo: Search Controller

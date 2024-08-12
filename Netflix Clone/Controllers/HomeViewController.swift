@@ -7,9 +7,15 @@
 
 import UIKit
 
+enum Sections: Int {
+    case TrendingMovies = 0
+    case TrendingTVs = 1
+    case Upcoming = 2
+}
+
 class HomeViewController: UIViewController {
 
-    let sectionTitles = ["Trending Movies", "Popular", "Trending TV", "Upcoming", "Top rated"]
+    let sectionTitles = ["Trending Movies", "Trending TV", "Upcoming"]
     
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -69,10 +75,44 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
-            print("return default tableViewCell")
             return UITableViewCell()
         }
 
+        switch indexPath.section {
+        case Sections.TrendingMovies.rawValue:
+            APICaller.shared.getTrendingMovies { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.TrendingTVs.rawValue:
+            APICaller.shared.getTrendingTVs { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        case Sections.Upcoming.rawValue:
+            APICaller.shared.getUpcomingMovies { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        default:
+            print("unknown path")
+            return UITableViewCell()
+        }
+        
         return cell
     }
     
